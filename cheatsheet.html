@@ -97,10 +97,17 @@
         <div class="cheatsheet-right">
           <h2>Get the Free Cheat Sheet</h2>
           <p>Subscribe to the ConPulse AI newsletter and get the PDF instantly.</p>
-          <form class="email-form" action="https://substack.com/@constructionpulseai" method="get" target="_blank" onsubmit="handleSubmit(event)">
-            <input type="email" id="email-input" placeholder="your@email.com" required>
-            <button type="submit">Get Free Cheat Sheet →</button>
-          </form>
+          <div id="custom-substack-embed"></div>
+          <script>
+            window.CustomSubstackWidget = {
+              substackUrl: "constructionpulseai.substack.com",
+              placeholder: "your@email.com",
+              buttonText: "Get Free Cheat Sheet →",
+              theme: "custom",
+              colors: { primary: "#e94560", input: "#16213e", email: "#ffffff", text: "#ffffff" }
+            };
+          </script>
+          <script src="https://substackapi.com/widget.js" async></script>
           <p class="trust-line">🔒 No spam. Unsubscribe anytime. Weekly AI tips for contractors.</p>
         </div>
       </div>
@@ -123,14 +130,7 @@
   const navLinks = document.getElementById('navLinks');
   if (navToggle) navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-input').value;
-    // Open Substack subscribe with email pre-filled
-    window.open('https://substack.com/@constructionpulseai?utm_source=cheatsheet&email=' + encodeURIComponent(email), '_blank');
-    // Show thank you
-    document.querySelector('.cheatsheet-right').innerHTML = '<h2 style="color:#4ecdc4">✅ Check your email!</h2><p style="margin-top:12px">Subscribe to the newsletter on the page that just opened, then download your cheat sheet below.</p><a href="10-ChatGPT-Prompts-Every-Sub-Should-Know.pdf" style="display:inline-block;margin-top:20px;padding:14px 28px;background:#e94560;color:#fff;border-radius:8px;font-weight:600;text-decoration:none">Download PDF →</a>';
-  }
+  // Substack widget handles subscribe natively — no redirect needed
   </script>
 </body>
 </html>
