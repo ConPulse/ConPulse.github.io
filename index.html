@@ -121,7 +121,6 @@
 
     @media (max-width: 768px) {
       .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-      .hero-visual { order: -1; }
       .blog-card-mini { grid-template-columns: 80px 1fr; }
     }
   </style>
@@ -157,42 +156,40 @@
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="container">
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge fade-up"><span class="pulse"></span> New article every week</div>
-          <h1 class="hero-title fade-up">AI in Construction.<br><span>No BS.</span></h1>
-          <p class="hero-subtitle fade-up delay-1">I run a large sub operation. I'm testing every AI tool I can find — and sharing what actually works. No hype, no jargon, just results.</p>
-          <div class="hero-cta fade-up delay-2">
-            <a href="#articles" class="btn btn-primary">Read the Latest</a>
-            <a href="cheatsheet.html" class="btn btn-outline">🏗️ Free Cheat Sheet →</a>
-          </div>
-          <div class="social-proof fade-up delay-3">
-            <div class="avatar-stack">
-              <div class="avatar-dot" style="background:#e94560;">🏗</div>
-              <div class="avatar-dot" style="background:#4ecdc4;">⚡</div>
-              <div class="avatar-dot" style="background:#0f3460;">🔧</div>
-              <div class="avatar-dot" style="background:#16213e;">📐</div>
-            </div>
-            <p class="social-proof-text"><strong>Contractors are paying attention.</strong><br>Weekly AI insights built for the field, not the boardroom.</p>
-          </div>
+      <div style="text-align:center;margin-bottom:48px;position:relative;z-index:1;">
+        <div class="hero-badge fade-up" style="margin:0 auto 24px;"><span class="pulse"></span> New article every week</div>
+        <h1 class="hero-title fade-up" style="max-width:700px;margin:0 auto 20px;">AI in Construction.<br><span>No BS.</span></h1>
+        <p class="hero-subtitle fade-up delay-1" style="max-width:560px;margin:0 auto 32px;">I run a large sub operation. I'm testing every AI tool I can find — and sharing what actually works. No hype, no jargon, just results.</p>
+        <div class="hero-cta fade-up delay-2" style="justify-content:center;">
+          <a href="#articles" class="btn btn-primary">Read the Latest</a>
+          <a href="cheatsheet.html" class="btn btn-outline">🏗️ Free Cheat Sheet →</a>
         </div>
-        <div class="hero-visual fade-up delay-1">
-          <div class="float-card">
-            <div class="float-card-icon">⏱️</div>
-            <h4>8 hours → 45 minutes</h4>
-            <p>That's what AI takeoff automation does to a full set of plans. We break down the real numbers.</p>
-          </div>
-          <div class="float-card highlight">
-            <div class="float-card-icon">📊</div>
-            <h4>$3.9B → $22.7B by 2032</h4>
-            <p>Construction AI market is exploding. Small subs who move first will win.</p>
-          </div>
-          <div class="float-card">
-            <div class="float-card-icon">🤖</div>
-            <h4>Tools That Actually Work</h4>
-            <p>We test the tools so you don't waste money on garbage. Real reviews, real results.</p>
-          </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1;" class="fade-up delay-2">
+        <div class="float-card">
+          <div class="float-card-icon">⏱️</div>
+          <h4>8 hours → 45 minutes</h4>
+          <p>That's what AI takeoff automation does to a full set of plans. We break down the real numbers.</p>
         </div>
+        <div class="float-card highlight">
+          <div class="float-card-icon">📊</div>
+          <h4>$3.9B → $22.7B by 2032</h4>
+          <p>Construction AI market is exploding. Small subs who move first will win.</p>
+        </div>
+        <div class="float-card">
+          <div class="float-card-icon">🤖</div>
+          <h4>Tools That Actually Work</h4>
+          <p>We test the tools so you don't waste money on garbage. Real reviews, real results.</p>
+        </div>
+      </div>
+      <div class="social-proof fade-up delay-3" style="justify-content:center;position:relative;z-index:1;">
+        <div class="avatar-stack">
+          <div class="avatar-dot" style="background:#e94560;">🏗</div>
+          <div class="avatar-dot" style="background:#4ecdc4;">⚡</div>
+          <div class="avatar-dot" style="background:#0f3460;">🔧</div>
+          <div class="avatar-dot" style="background:#16213e;">📐</div>
+        </div>
+        <p class="social-proof-text"><strong>Contractors are paying attention.</strong><br>Weekly AI insights built for the field, not the boardroom.</p>
       </div>
     </div>
   </section>
