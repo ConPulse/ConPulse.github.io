@@ -15,6 +15,116 @@
   <meta name="twitter:description" content="Real talk about AI in construction. Written by a contractor, for contractors.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='15' width='100' height='100' fill='%231a1a2e'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23e94560' font-family='Arial,sans-serif' font-weight='bold'>C</text></svg>">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Hero enhancements */
+    .hero { min-height: 90vh; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(233,69,96,0.12); border: 1px solid rgba(233,69,96,0.25);
+      border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 600;
+      color: var(--red); margin-bottom: 24px; letter-spacing: 0.5px;
+    }
+    .hero-badge .pulse {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--red);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+
+    /* Floating feature cards on right side of hero */
+    .hero-visual { position: relative; }
+    .float-card {
+      background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
+      padding: 20px 24px; margin-bottom: 16px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .float-card:hover { transform: translateX(6px); border-color: rgba(233,69,96,0.4); }
+    .float-card-icon { font-size: 24px; margin-bottom: 8px; }
+    .float-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .float-card p { font-size: 13px; color: var(--gray-300); line-height: 1.5; }
+    .float-card.highlight { border-color: rgba(78,205,196,0.3); background: rgba(78,205,196,0.06); }
+
+    /* Social proof bar */
+    .social-proof {
+      display: flex; align-items: center; gap: 12px; margin-top: 32px;
+      padding-top: 24px; border-top: 1px solid var(--gray-400);
+    }
+    .avatar-stack { display: flex; }
+    .avatar-dot {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 2px solid var(--navy-dark); margin-left: -8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+    }
+    .avatar-dot:first-child { margin-left: 0; }
+    .social-proof-text { font-size: 13px; color: var(--gray-300); }
+    .social-proof-text strong { color: var(--gray-100); }
+
+    /* Cheat sheet CTA banner */
+    .cta-banner {
+      padding: 0; border-top: 1px solid rgba(78,205,196,0.15);
+      border-bottom: 1px solid rgba(78,205,196,0.15);
+      background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 50%, #16213e 100%);
+      position: relative; overflow: hidden;
+    }
+    .cta-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(78,205,196,0.08), transparent 70%);
+    }
+    .cta-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px; padding: 40px 0; position: relative;
+    }
+    .cta-banner h3 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
+    .cta-banner .cta-sub { color: var(--gray-300); margin: 0; font-size: 15px; }
+    .cta-badge {
+      display: inline-block; background: rgba(78,205,196,0.15); color: var(--teal);
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      padding: 4px 10px; border-radius: 4px; margin-bottom: 8px;
+    }
+
+    /* Article cards stacked */
+    .blog-card-mini {
+      display: grid; grid-template-columns: 120px 1fr; gap: 0;
+      background: var(--gray-500); border: 1px solid var(--gray-400);
+      border-radius: var(--radius); overflow: hidden; transition: var(--transition);
+    }
+    .blog-card-mini:hover { border-color: var(--red); transform: translateY(-2px); }
+    .blog-card-mini .mini-img {
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px; color: var(--gray-300);
+    }
+    .blog-card-mini .mini-content { padding: 20px; }
+    .blog-card-mini h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+    .blog-card-mini p { font-size: 13px; color: var(--gray-300); }
+    .coming-soon-tag {
+      display: inline-block; background: rgba(255,255,255,0.08);
+      color: var(--gray-300); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 3px 10px; border-radius: 4px; margin-bottom: 8px;
+    }
+
+    /* Topics strip */
+    .topics-strip {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      margin-bottom: 48px;
+    }
+    .topic-pill {
+      background: var(--gray-500); border: 1px solid var(--gray-400);
+      border-radius: 20px; padding: 8px 18px; font-size: 13px;
+      color: var(--gray-200); transition: var(--transition);
+    }
+    .topic-pill:hover { border-color: var(--red); color: var(--white); }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+      .hero-visual { order: -1; }
+      .blog-card-mini { grid-template-columns: 80px 1fr; }
+    }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -22,11 +132,7 @@
     "name": "ConPulse AI",
     "url": "https://conpulseai.com",
     "description": "Real talk about AI in construction. Written by a contractor, for contractors.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "ConPulse AI",
-      "url": "https://conpulseai.com"
-    }
+    "publisher": { "@type": "Organization", "name": "ConPulse AI", "url": "https://conpulseai.com" }
   }
   </script>
 </head>
@@ -42,7 +148,7 @@
         <li><a href="#home">Home</a></li>
         <li><a href="#articles">Articles</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="https://substack.com/@constructionpulseai" target="_blank" rel="noopener">Subscribe</a></li>
+        <li><a href="cheatsheet.html">Free Cheat Sheet</a></li>
       </ul>
     </div>
   </nav>
@@ -51,25 +157,57 @@
   <section class="hero" id="home">
     <div class="hero-bg"></div>
     <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title fade-up">AI in Construction.<br><span>No BS.</span></h1>
-        <p class="hero-subtitle fade-up delay-1">I'm a contractor exploring how AI is changing our industry. This is where I share what I'm learning — the wins, the failures, and everything in between.</p>
-        <div class="hero-cta fade-up delay-2">
-          <a href="#articles" class="btn btn-primary">Read the Latest</a>
-          <a href="cheatsheet.html" class="btn btn-outline">Free Cheat Sheet →</a>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge fade-up"><span class="pulse"></span> New article every week</div>
+          <h1 class="hero-title fade-up">AI in Construction.<br><span>No BS.</span></h1>
+          <p class="hero-subtitle fade-up delay-1">I run a large sub operation. I'm testing every AI tool I can find — and sharing what actually works. No hype, no jargon, just results.</p>
+          <div class="hero-cta fade-up delay-2">
+            <a href="#articles" class="btn btn-primary">Read the Latest</a>
+            <a href="cheatsheet.html" class="btn btn-outline">🏗️ Free Cheat Sheet →</a>
+          </div>
+          <div class="social-proof fade-up delay-3">
+            <div class="avatar-stack">
+              <div class="avatar-dot" style="background:#e94560;">🏗</div>
+              <div class="avatar-dot" style="background:#4ecdc4;">⚡</div>
+              <div class="avatar-dot" style="background:#0f3460;">🔧</div>
+              <div class="avatar-dot" style="background:#16213e;">📐</div>
+            </div>
+            <p class="social-proof-text"><strong>Contractors are paying attention.</strong><br>Weekly AI insights built for the field, not the boardroom.</p>
+          </div>
+        </div>
+        <div class="hero-visual fade-up delay-1">
+          <div class="float-card">
+            <div class="float-card-icon">⏱️</div>
+            <h4>8 hours → 45 minutes</h4>
+            <p>That's what AI takeoff automation does to a full set of plans. We break down the real numbers.</p>
+          </div>
+          <div class="float-card highlight">
+            <div class="float-card-icon">📊</div>
+            <h4>$3.9B → $22.7B by 2032</h4>
+            <p>Construction AI market is exploding. Small subs who move first will win.</p>
+          </div>
+          <div class="float-card">
+            <div class="float-card-icon">🤖</div>
+            <h4>Tools That Actually Work</h4>
+            <p>We test the tools so you don't waste money on garbage. Real reviews, real results.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Cheat Sheet CTA -->
-  <section style="padding:40px 0;background:linear-gradient(135deg,#0f3460,#1a1a2e);border-top:1px solid rgba(78,205,196,0.15);border-bottom:1px solid rgba(78,205,196,0.15);">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-      <div>
-        <h3 style="font-size:22px;font-weight:700;margin:0 0 6px;">🏗️ Free: 10 ChatGPT Prompts Every Sub Should Know</h3>
-        <p style="color:#a0a0b8;margin:0;font-size:15px;">Copy-paste prompts for RFIs, change orders, daily reports, and more. Built by a contractor.</p>
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <div class="cta-badge">Free Resource</div>
+          <h3>🏗️ 10 ChatGPT Prompts Every Sub Should Know</h3>
+          <p class="cta-sub">RFIs, change orders, daily reports — copy-paste and go. Built by a contractor.</p>
+        </div>
+        <a href="cheatsheet.html" class="btn btn-primary" style="white-space:nowrap;flex-shrink:0;">Download Free →</a>
       </div>
-      <a href="cheatsheet.html" class="btn btn-primary" style="white-space:nowrap;flex-shrink:0;">Download Free →</a>
     </div>
   </section>
 
@@ -78,7 +216,18 @@
     <div class="container">
       <h2 class="section-title fade-up">Latest <span>Articles</span></h2>
       <p class="section-subtitle fade-up">New posts every week. No hype, no jargon — just what actually works on the jobsite.</p>
+
+      <div class="topics-strip fade-up">
+        <span class="topic-pill">AI Takeoffs</span>
+        <span class="topic-pill">Estimating</span>
+        <span class="topic-pill">Tool Reviews</span>
+        <span class="topic-pill">ROI & Numbers</span>
+        <span class="topic-pill">Labor & AI</span>
+        <span class="topic-pill">Small Sub Strategy</span>
+      </div>
+
       <div class="blog-grid">
+        <!-- Featured Article -->
         <article class="blog-card fade-up">
           <div class="blog-card-image">
             <img src="images/article-header.png" alt="AI Takeoff Automation" loading="lazy">
@@ -86,15 +235,43 @@
           <div class="blog-card-content">
             <span class="blog-tag">AI & Estimating</span>
             <h3>AI Takeoff Automation: How It's Changing Contractor Margins</h3>
-            <p>While you're still counting linear feet by hand, your competitor just bid 3 jobs before lunch. Here's what's actually happening with AI takeoffs — and why ignoring it isn't an option.</p>
+            <p>While you're still counting linear feet by hand, your competitor just bid 3 jobs before lunch. Here's what's actually happening with AI takeoffs.</p>
             <a href="https://substack.com/@constructionpulseai" class="blog-link" target="_blank" rel="noopener">Read Article →</a>
           </div>
         </article>
-        <!-- Add more articles here as blog-card blocks -->
+
+        <!-- Upcoming articles -->
+        <div style="display:grid;gap:16px;">
+          <div class="blog-card-mini fade-up">
+            <div class="mini-img">🚫</div>
+            <div class="mini-content">
+              <span class="coming-soon-tag">Coming Soon</span>
+              <h3>Why Contractors Can't Ignore AI Anymore</h3>
+              <p>The window is closing. Here's what's at stake.</p>
+            </div>
+          </div>
+          <div class="blog-card-mini fade-up">
+            <div class="mini-img">👷</div>
+            <div class="mini-content">
+              <span class="coming-soon-tag">Coming Soon</span>
+              <h3>AI Won't Replace Contractors — But This Will</h3>
+              <p>The real threat isn't robots. It's the guy across town who figured it out first.</p>
+            </div>
+          </div>
+          <div class="blog-card-mini fade-up">
+            <div class="mini-img">💰</div>
+            <div class="mini-content">
+              <span class="coming-soon-tag">Coming Soon</span>
+              <h3>Real ROI: What AI Tools Actually Cost vs. Save</h3>
+              <p>No fluff. Actual numbers from real contractors.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="blog-cta fade-up">
+
+      <div class="blog-cta fade-up" style="margin-top:48px;">
         <p>Get new articles delivered straight to your inbox. Free, no spam.</p>
-        <a href="https://substack.com/@constructionpulseai" class="btn btn-primary" target="_blank" rel="noopener">Subscribe on Substack</a>
+        <a href="cheatsheet.html" class="btn btn-primary">Subscribe + Get Free Cheat Sheet</a>
       </div>
     </div>
   </section>
@@ -112,8 +289,7 @@
           <div class="about-connect">
             <a href="mailto:conpulseai@gmail.com" class="connect-link">✉️ conpulseai@gmail.com</a>
             <a href="https://substack.com/@constructionpulseai" target="_blank" rel="noopener" class="connect-link">📰 Substack</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="connect-link">💼 LinkedIn</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener" class="connect-link">𝕏 Twitter</a>
+            <a href="https://twitter.com/ConPulseAI" target="_blank" rel="noopener" class="connect-link">𝕏 @ConPulseAI</a>
           </div>
         </div>
       </div>
@@ -130,6 +306,7 @@
           <a href="#home">Home</a>
           <a href="#articles">Articles</a>
           <a href="#about">About</a>
+          <a href="cheatsheet.html">Free Cheat Sheet</a>
           <a href="https://substack.com/@constructionpulseai" target="_blank" rel="noopener">Subscribe</a>
         </div>
         <p class="footer-copy">&copy; 2026 ConPulse AI. All rights reserved.</p>
