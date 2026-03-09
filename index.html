@@ -14,116 +14,10 @@
   <meta name="twitter:title" content="ConPulse AI — AI in Construction, No BS">
   <meta name="twitter:description" content="Real talk about AI in construction. Written by a contractor, for contractors.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='15' width='100' height='100' fill='%231a1a2e'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='%23e94560' font-family='Arial,sans-serif' font-weight='bold'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Hero enhancements */
-    .hero { min-height: 90vh; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(233,69,96,0.12); border: 1px solid rgba(233,69,96,0.25);
-      border-radius: 20px; padding: 6px 16px; font-size: 13px; font-weight: 600;
-      color: var(--red); margin-bottom: 24px; letter-spacing: 0.5px;
-    }
-    .hero-badge .pulse {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--red);
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
-
-    /* Floating feature cards on right side of hero */
-    .hero-visual { position: relative; }
-    .float-card {
-      background: rgba(255,255,255,0.06); backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
-      padding: 20px 24px; margin-bottom: 16px;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-    .float-card:hover { transform: translateX(6px); border-color: rgba(233,69,96,0.4); }
-    .float-card-icon { font-size: 24px; margin-bottom: 8px; }
-    .float-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-    .float-card p { font-size: 13px; color: var(--gray-300); line-height: 1.5; }
-    .float-card.highlight { border-color: rgba(78,205,196,0.3); background: rgba(78,205,196,0.06); }
-
-    /* Social proof bar */
-    .social-proof {
-      display: flex; align-items: center; gap: 12px; margin-top: 32px;
-      padding-top: 24px; border-top: 1px solid var(--gray-400);
-    }
-    .avatar-stack { display: flex; }
-    .avatar-dot {
-      width: 32px; height: 32px; border-radius: 50%;
-      border: 2px solid var(--navy-dark); margin-left: -8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 700;
-    }
-    .avatar-dot:first-child { margin-left: 0; }
-    .social-proof-text { font-size: 13px; color: var(--gray-300); }
-    .social-proof-text strong { color: var(--gray-100); }
-
-    /* Cheat sheet CTA banner */
-    .cta-banner {
-      padding: 0; border-top: 1px solid rgba(78,205,196,0.15);
-      border-bottom: 1px solid rgba(78,205,196,0.15);
-      background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 50%, #16213e 100%);
-      position: relative; overflow: hidden;
-    }
-    .cta-banner::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 80% 50%, rgba(78,205,196,0.08), transparent 70%);
-    }
-    .cta-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 20px; padding: 40px 0; position: relative;
-    }
-    .cta-banner h3 { font-size: 22px; font-weight: 700; margin: 0 0 6px; }
-    .cta-banner .cta-sub { color: var(--gray-300); margin: 0; font-size: 15px; }
-    .cta-badge {
-      display: inline-block; background: rgba(78,205,196,0.15); color: var(--teal);
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-      padding: 4px 10px; border-radius: 4px; margin-bottom: 8px;
-    }
-
-    /* Article cards stacked */
-    .blog-card-mini {
-      display: grid; grid-template-columns: 120px 1fr; gap: 0;
-      background: var(--gray-500); border: 1px solid var(--gray-400);
-      border-radius: var(--radius); overflow: hidden; transition: var(--transition);
-    }
-    .blog-card-mini:hover { border-color: var(--red); transform: translateY(-2px); }
-    .blog-card-mini .mini-img {
-      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 36px; color: var(--gray-300);
-    }
-    .blog-card-mini .mini-content { padding: 20px; }
-    .blog-card-mini h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
-    .blog-card-mini p { font-size: 13px; color: var(--gray-300); }
-    .coming-soon-tag {
-      display: inline-block; background: rgba(255,255,255,0.08);
-      color: var(--gray-300); font-size: 11px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 1px;
-      padding: 3px 10px; border-radius: 4px; margin-bottom: 8px;
-    }
-
-    /* Topics strip */
-    .topics-strip {
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-      margin-bottom: 48px;
-    }
-    .topic-pill {
-      background: var(--gray-500); border: 1px solid var(--gray-400);
-      border-radius: 20px; padding: 8px 18px; font-size: 13px;
-      color: var(--gray-200); transition: var(--transition);
-    }
-    .topic-pill:hover { border-color: var(--red); color: var(--white); }
-
-    @media (max-width: 768px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-      .blog-card-mini { grid-template-columns: 80px 1fr; }
-    }
-  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -136,6 +30,9 @@
   </script>
 </head>
 <body>
+  <!-- Cursor glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
   <!-- Navigation -->
   <nav class="nav" id="nav">
     <div class="nav-container">
@@ -155,41 +52,45 @@
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-bg"></div>
+    <div class="hero-gradient-orb orb-1"></div>
+    <div class="hero-gradient-orb orb-2"></div>
+    <div class="hero-gradient-orb orb-3"></div>
+    <div class="hero-pattern"></div>
     <div class="container">
-      <div style="text-align:center;margin-bottom:48px;position:relative;z-index:1;">
-        <div class="hero-badge fade-up" style="margin:0 auto 24px;"><span class="pulse"></span> New article every week</div>
-        <h1 class="hero-title fade-up" style="max-width:700px;margin:0 auto 20px;">AI in Construction.<br><span>No BS.</span></h1>
-        <p class="hero-subtitle fade-up delay-1" style="max-width:560px;margin:0 auto 32px;">I run a large sub operation. I'm testing every AI tool I can find — and sharing what actually works. No hype, no jargon, just results.</p>
-        <div class="hero-cta fade-up delay-2" style="justify-content:center;">
+      <div class="hero-content-wrapper">
+        <div class="hero-badge reveal"><span class="pulse"></span> New article every week</div>
+        <h1 class="hero-title reveal delay-1">AI in Construction.<br><span>No BS.</span></h1>
+        <p class="hero-subtitle reveal delay-2">I run a large sub operation. I'm testing every AI tool I can find — and sharing what actually works. No hype, no jargon, just results.</p>
+        <div class="hero-cta reveal delay-3">
           <a href="#articles" class="btn btn-primary">Read the Latest</a>
           <a href="cheatsheet.html" class="btn btn-outline">🏗️ Free Cheat Sheet →</a>
         </div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:1;" class="fade-up delay-2">
-        <div class="float-card">
-          <div class="float-card-icon">⏱️</div>
-          <h4>8 hours → 45 minutes</h4>
-          <p>That's what AI takeoff automation does to a full set of plans. We break down the real numbers.</p>
+        <div class="hero-cards stagger-children">
+          <div class="float-card reveal">
+            <div class="float-card-icon">⏱️</div>
+            <h4>8 hours → 45 minutes</h4>
+            <p>That's what AI takeoff automation does to a full set of plans. We break down the real numbers.</p>
+          </div>
+          <div class="float-card highlight reveal">
+            <div class="float-card-icon">📊</div>
+            <h4>$<span class="counter" data-target="3.9">0</span>B → $<span class="counter" data-target="22.7">0</span>B by 2032</h4>
+            <p>Construction AI market is exploding. Small subs who move first will win.</p>
+          </div>
+          <div class="float-card reveal">
+            <div class="float-card-icon">🤖</div>
+            <h4>Tools That Actually Work</h4>
+            <p>We test the tools so you don't waste money on garbage. Real reviews, real results.</p>
+          </div>
         </div>
-        <div class="float-card highlight">
-          <div class="float-card-icon">📊</div>
-          <h4>$3.9B → $22.7B by 2032</h4>
-          <p>Construction AI market is exploding. Small subs who move first will win.</p>
+        <div class="social-proof reveal delay-5">
+          <div class="avatar-stack">
+            <div class="avatar-dot" style="background:#e94560;">🏗</div>
+            <div class="avatar-dot" style="background:#4ecdc4;">⚡</div>
+            <div class="avatar-dot" style="background:#0f3460;">🔧</div>
+            <div class="avatar-dot" style="background:#16213e;">📐</div>
+          </div>
+          <p class="social-proof-text"><strong>Contractors are paying attention.</strong><br>Weekly AI insights built for the field, not the boardroom.</p>
         </div>
-        <div class="float-card">
-          <div class="float-card-icon">🤖</div>
-          <h4>Tools That Actually Work</h4>
-          <p>We test the tools so you don't waste money on garbage. Real reviews, real results.</p>
-        </div>
-      </div>
-      <div class="social-proof fade-up delay-3" style="justify-content:center;position:relative;z-index:1;">
-        <div class="avatar-stack">
-          <div class="avatar-dot" style="background:#e94560;">🏗</div>
-          <div class="avatar-dot" style="background:#4ecdc4;">⚡</div>
-          <div class="avatar-dot" style="background:#0f3460;">🔧</div>
-          <div class="avatar-dot" style="background:#16213e;">📐</div>
-        </div>
-        <p class="social-proof-text"><strong>Contractors are paying attention.</strong><br>Weekly AI insights built for the field, not the boardroom.</p>
       </div>
     </div>
   </section>
@@ -211,21 +112,21 @@
   <!-- Articles Section -->
   <section class="blog" id="articles">
     <div class="container">
-      <h2 class="section-title fade-up">Latest <span>Articles</span></h2>
-      <p class="section-subtitle fade-up">New posts every week. No hype, no jargon — just what actually works on the jobsite.</p>
+      <h2 class="section-title reveal">Latest <span>Articles</span></h2>
+      <p class="section-subtitle reveal">New posts every week. No hype, no jargon — just what actually works on the jobsite.</p>
 
-      <div class="topics-strip fade-up">
-        <span class="topic-pill">AI Takeoffs</span>
-        <span class="topic-pill">Estimating</span>
-        <span class="topic-pill">Tool Reviews</span>
-        <span class="topic-pill">ROI & Numbers</span>
-        <span class="topic-pill">Labor & AI</span>
-        <span class="topic-pill">Small Sub Strategy</span>
+      <div class="topics-strip reveal stagger-children">
+        <span class="topic-pill reveal">AI Takeoffs</span>
+        <span class="topic-pill reveal">Estimating</span>
+        <span class="topic-pill reveal">Tool Reviews</span>
+        <span class="topic-pill reveal">ROI & Numbers</span>
+        <span class="topic-pill reveal">Labor & AI</span>
+        <span class="topic-pill reveal">Small Sub Strategy</span>
       </div>
 
       <div class="blog-grid">
-        <!-- Featured Article -->
-        <article class="blog-card fade-up">
+        <!-- Featured Article — full width image overlay -->
+        <article class="blog-card reveal">
           <div class="blog-card-image">
             <img src="images/article-header.png" alt="AI Takeoff Automation" loading="lazy">
           </div>
@@ -233,29 +134,34 @@
             <span class="blog-tag">AI & Estimating</span>
             <h3>AI Takeoff Automation: How It's Changing Contractor Margins</h3>
             <p>While you're still counting linear feet by hand, your competitor just bid 3 jobs before lunch. Here's what's actually happening with AI takeoffs.</p>
-            <a href="https://substack.com/@constructionpulseai" class="blog-link" target="_blank" rel="noopener">Read Article →</a>
+            <div>
+              <a href="https://constructionpulseai.substack.com" class="blog-link" target="_blank" rel="noopener">Read Article →</a>
+              <span class="read-time">7 min read</span>
+            </div>
           </div>
         </article>
 
-        <!-- Upcoming articles -->
+        <!-- Published articles -->
         <div style="display:grid;gap:16px;">
-          <div class="blog-card-mini fade-up">
-            <div class="mini-img">🚫</div>
+          <a href="https://constructionpulseai.substack.com/p/ai-wont-take-your-job-but-the-contractor" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div class="blog-card-mini reveal">
+            <div class="mini-img">⚡</div>
+            <div class="mini-content">
+              <span class="blog-tag" style="font-size:10px;">NEW — Competition & Speed</span>
+              <h3>AI Won't Take Your Job. But the Contractor Using It Might.</h3>
+              <p>The sub who bids in 48 hours while you take a week? He's using AI.<span class="read-time" style="margin-left:8px;">5 min read</span></p>
+            </div>
+          </div>
+          </a>
+          <div class="blog-card-mini reveal">
+            <div class="mini-img">👷</div>
             <div class="mini-content">
               <span class="coming-soon-tag">Coming Soon</span>
               <h3>Why Contractors Can't Ignore AI Anymore</h3>
               <p>The window is closing. Here's what's at stake.</p>
             </div>
           </div>
-          <div class="blog-card-mini fade-up">
-            <div class="mini-img">👷</div>
-            <div class="mini-content">
-              <span class="coming-soon-tag">Coming Soon</span>
-              <h3>AI Won't Replace Contractors — But This Will</h3>
-              <p>The real threat isn't robots. It's the guy across town who figured it out first.</p>
-            </div>
-          </div>
-          <div class="blog-card-mini fade-up">
+          <div class="blog-card-mini reveal">
             <div class="mini-img">💰</div>
             <div class="mini-content">
               <span class="coming-soon-tag">Coming Soon</span>
@@ -266,7 +172,7 @@
         </div>
       </div>
 
-      <div class="blog-cta fade-up" style="margin-top:48px;">
+      <div class="blog-cta reveal" style="margin-top:56px;">
         <p>Get new articles delivered straight to your inbox. Free, no spam.</p>
         <a href="cheatsheet.html" class="btn btn-primary">Subscribe + Get Free Cheat Sheet</a>
       </div>
@@ -276,9 +182,25 @@
   <!-- About Section -->
   <section class="about" id="about">
     <div class="container">
-      <h2 class="section-title fade-up">Who's Writing <span>This</span></h2>
-      <div class="about-content fade-up">
-        <div class="about-text">
+      <h2 class="section-title reveal">Who's Writing <span>This</span></h2>
+      <div class="about-content">
+        <div class="about-visual reveal">
+          <blockquote class="about-quote">
+            "Most small subs have no idea what's coming — or how much it's going to change the game."
+          </blockquote>
+          <p class="about-quote-attr">— The reason this blog exists</p>
+          <div class="about-stats stagger-children">
+            <div class="about-stat reveal">
+              <div class="about-stat-number teal counter" data-target="100" data-suffix="+">0</div>
+              <div class="about-stat-label">Field crew members</div>
+            </div>
+            <div class="about-stat reveal">
+              <div class="about-stat-number red counter" data-target="50" data-suffix="+">0</div>
+              <div class="about-stat-label">AI tools tested</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text reveal">
           <p class="about-lead">I run a large subcontracting operation — hundreds of field guys, multifamily apartment projects.</p>
           <p>I started digging into AI because I was tired of watching estimators spend entire days on a single set of plans. Then I realized most small subs have no idea what's coming — or how much it's going to change the game.</p>
           <p>This blog is me documenting the journey in real time. What tools I'm testing, what's actually working, what's overhyped garbage. Build in public, learn in public.</p>
@@ -296,6 +218,7 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
+      <a href="#home" class="back-to-top" aria-label="Back to top">↑</a>
       <div class="footer-content">
         <div class="footer-logo">Con<span>Pulse</span> AI</div>
         <p class="footer-tagline">AI tools for contractors who'd rather build than click</p>
