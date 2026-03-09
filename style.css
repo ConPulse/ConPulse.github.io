@@ -451,7 +451,7 @@ section { padding: 150px 0; }
   }
   .nav-links.open { display: flex; }
   section { padding: 100px 0; }
-  .hero { padding: 120px 0 80px; }
+  .hero { padding: 100px 0 60px; min-height: auto; }
   .hero-title { font-size: clamp(36px, 8vw, 48px); }
   .hero-cards { grid-template-columns: 1fr; max-width: 420px; }
   .blog-card { min-height: 320px; }
